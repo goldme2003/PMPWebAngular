@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+/*@import "assets/css/all.min.css";*/
+@import "assets/css/site.css";
+@import "assets/vendor/animate-css/vivify.min.css";
+@import "assets/vendor/c3/c3.min.css";
+@import "assets/vendor/chartist/css/chartist.css";
+@import "assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css";
+@import "assets/vendor/toastr/toastr.min.css";
+@import "assets/vendor/jvectormap/jquery-jvectormap-2.0.3.css" ;
+
+
