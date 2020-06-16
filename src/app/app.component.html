@@ -1,5 +1,5 @@
 <div class="themesetting">
-  <a href="#" class="theme_btn"><i class="icon-magic-wand"></i></a>
+  <a href="#" class="theme_btn"><i class="fa fa-arrow-right"></i></a>
   <ul class="choose-skin list-unstyled mb-0">
     <li data-theme="green">
       <div class="green"></div>
@@ -7,10 +7,10 @@
     <li data-theme="orange">
       <div class="orange"></div>
     </li>
-    <li data-theme="blush" class="active">
+    <li data-theme="blush">
       <div class="blush"></div>
     </li>
-    <li data-theme="cyan">
+    <li data-theme="cyan" class="active">
       <div class="cyan"></div>
     </li>
   </ul>
@@ -504,7 +504,7 @@
       </div>
       <nav id="left-sidebar-nav" class="sidebar-nav">
         <ul id="main-menu" class="metismenu">
-          <li class="header"><span><i class="fa fa-area-chart"></i><h4>知识领域</h4></span></li>
+          <li class="header bg-warning"><span><i class="fa fa-area-chart"></i>知识领域</span></li>
           <li class="inactive">
             <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>项目整合管理</span></a>
             <ul >
@@ -530,7 +530,7 @@
             </ul>
           </li>
 
-          <li class="header"><i class="fa fa-book"></i><span><h4>过程组</h4></span></li>
+          <li class="header bg-warning"><span><i class="fa fa-book"></i>过程组</span></li>
           <li class="inactive">
             <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>启动过程组</span></a>
             <ul>
@@ -545,35 +545,51 @@
               <li class="active"><a href="index.html">Light Version</a></li>
             </ul>
           </li>
-          <li class="active">
+          <li class="inactive">
             <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
             <ul>
               <li class="active"><a href="index.html">Light Version</a></li>
             </ul>
           </li>
 
-          <li class="header"><span><i class="fa fa-cogs"></i><h4>设置</h4></span> </li>
-          <li class="active">
+          <li class="header bg-warning"><span><i class="fa fa-cogs"></i>设置</span> </li>
+          <li class="inactive">
             <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>知识领域</span></a>
             <ul>
               <li class="active"><a routerLink="/addks">新增</a></li>
               <li class="active"><a routerLink="/modiks">修改</a></li>
             </ul>
           </li>
-          <li class="active">
+          <li class="inactive">
             <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>过程组</span></a>
             <ul>
-              <li class="active"><a href="index.html">新增</a></li>
-              <li class="active"><a href="index.html">修改</a></li>
+              <li class="active"><a routerLink="/addpg">新增</a></li>
+              <li class="active"><a routerLink="/modipg">修改</a></li>
             </ul>
           </li>
-          <li class="active">
+          <li class="inactive">
+            <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>过程</span></a>
+            <ul>
+              <li class="active"><a routerLink="/addprocess">新增</a></li>
+              <li class="active"><a routerLink="/modiprocess">修改</a></li>
+            </ul>
+          </li>
+          <li class="inactive">
             <a href="#Dashboard" class="has-arrow"><i class="fa fa-tachometer"></i><span>ITTO</span></a>
             <ul>
-              <li class="active"><a href="index.html">Light Version</a></li>
+              <li class="active"><a routerLink="/additto">新增</a></li>
+              <li class="active"><a routerLink="/modiitto">修改</a></li>
             </ul>
           </li>
-
+          <li class="inactive">
+            <a href="#Dashboard" class="has-arrow"><i class="fa fa-wrench"></i><span>工具</span></a>
+            <ul>
+              <li class="active"><a routerLink="/addtool">新增工具项</a></li>
+              <li class="active"><a routerLink="/addtg">新增工具类</a></li>
+              <li class="active"><a routerLink="/moditool">修改工具项</a></li>
+            </ul>
+          </li>
+<!--以下为默认模版与项目本身无关，项目后期删除-->
           <li class="header">App</li>
           <li><a href="app-inbox.html"><i class="fa fa-envelope-open"></i> <span>Email</span> <span
             class="badge badge-default float-right mr-0">12</span></a></li>

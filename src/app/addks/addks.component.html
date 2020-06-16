@@ -1,1 +1,28 @@
 <p>addks works!</p>
+<div>
+  <table class="table table-responsive table-sm">
+    <caption>数据库中已有知识领域</caption>
+
+    <thead class="table-primary">
+    <th>ID</th>
+    <th>名称</th>
+    </thead>
+    <tbody *ngFor="let ksitem of allksitems">
+    <tr>
+      <td><span class="badge">{{ksitem.ksId}}</span></td>
+      <td><a routerLink="/addks">
+        {{ksitem.ksName}}
+      </a></td>
+    </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+<div>
+  <label>请输入新的知识领域名称：</label>
+  <input #newksname text="请输入新的知识领域名称"/>
+  <button (click)="addNewksName(newksname.value); newksname.value=''; this.showAllKs()" class="btn-primary" >提交</button>
+</div>
+

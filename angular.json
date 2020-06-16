@@ -70,7 +70,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "PMPWeb:build"
+            "browserTarget": "PMPWeb:build",
+            "proxyConfig": "proxy.config.json",
+            "disableHostCheck": true
           },
           "configurations": {
             "production": {
