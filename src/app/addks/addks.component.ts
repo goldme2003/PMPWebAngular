@@ -31,5 +31,7 @@ export class AddksComponent implements OnInit {
     this.ksService.getAllKs()
       .subscribe(allksitems => this.allksitems = allksitems);
   }
+ /* TODO:
+ *   update existed Knowledge scope*/
 
 }

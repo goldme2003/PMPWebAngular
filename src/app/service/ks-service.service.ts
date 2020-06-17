@@ -26,4 +26,6 @@ export class KsServiceService {
   getAllKs(): Observable<Ksmodel[]> {
     return this.http.get<Ksmodel[]>(this.getksservurl);
   }
+  /*TODO:
+  *  update Knowledge scope table function*/
 }

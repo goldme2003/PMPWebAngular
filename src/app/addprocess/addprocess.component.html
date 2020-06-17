@@ -1,1 +1,51 @@
 <p>addprocess works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <label>请输入新过程的名称：</label>
+    </div>
+    <div class="col-md-3 text-left">
+      <input #newprocessname text="请输入新的知识领域名称"/>
+
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="pg_inputGroupSelect">请选择所属过程组：</label>
+      </div>
+      <select class="custom-select" id="pg_inputGroupSelect">
+        <option selected>请正确选择该过程的所属过程组...</option>
+        <option *ngFor="let pgi of pgitem" value="${{pgi.pgId}}">{{pgi.pgName}}</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="row">
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="ks_inputGroupSelect">请选择所属知识领域：</label>
+      </div>
+      <select class="custom-select" id="ks_inputGroupSelect">
+        <option selected>请正确选择该过程的所属知识领域...</option>
+        <option *ngFor="let ksi of ksitem" value="${{ksi.ksId}}">{{ksi.ksName}}</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-sm">
+
+    </div>
+    <div class="col-sm">
+      <button class="btn-primary" >提交</button>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+
+</div>

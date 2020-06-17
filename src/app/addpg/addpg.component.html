@@ -1,1 +1,48 @@
 <p>addpg works!</p>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <div class="card text-center">
+      <div class="header">
+        <h2 class="text-larger">数据库中已有的过程组</h2>
+      </div>
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead class="table-primary">
+            <th>ID</th>
+            <th>名称</th>
+            </thead>
+            <tbody *ngFor="let pgitem of allpgitems">
+            <tr>
+              <td><span class="badge">{{pgitem.pgId}}</span></td>
+              <td><a routerLink="/addpg">
+                {{pgitem.pgName}}
+              </a></td>
+            </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm text-right">
+      <label>请输入新的过程组名称：</label>
+    </div>
+    <div class="col-sm text-left">
+      <input #newpgname text="请输入新的知识领域名称"/>
+      <button (click)="addNewpgName(newpgname.value); newpgname.value=''; this.showAllPg()" class="btn-primary" >提交</button>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>

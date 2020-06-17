@@ -1,28 +1,72 @@
 <p>addks works!</p>
-<div>
-  <table class="table table-responsive table-sm">
-    <caption>数据库中已有知识领域</caption>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <div class="card text-center">
+      <div class="header">
+        <h2 class="text-larger">数据库中已有知识领域</h2>
+      </div>
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead class="table-primary">
+            <th>ID</th>
+            <th>名称</th>
+            </thead>
+            <tbody *ngFor="let ksitem of allksitems">
+            <tr>
+              <td><span class="badge">{{ksitem.ksId}}</span></td>
+              <td><a routerLink="/addks">
+                {{ksitem.ksName}}
+              </a></td>
+            </tr>
 
-    <thead class="table-primary">
-    <th>ID</th>
-    <th>名称</th>
-    </thead>
-    <tbody *ngFor="let ksitem of allksitems">
-    <tr>
-      <td><span class="badge">{{ksitem.ksId}}</span></td>
-      <td><a routerLink="/addks">
-        {{ksitem.ksName}}
-      </a></td>
-    </tr>
+            </tbody>
 
-    </tbody>
+          </table>
+        </div>
+      </div>
 
-  </table>
+    </div>
 
+
+
+  </div>
 </div>
-<div>
-  <label>请输入新的知识领域名称：</label>
-  <input #newksname text="请输入新的知识领域名称"/>
-  <button (click)="addNewksName(newksname.value); newksname.value=''; this.showAllKs()" class="btn-primary" >提交</button>
+<div class="container">
+  <div class="row">
+    <div class="col-sm text-right">
+      <label>请输入新的知识领域名称：</label>
+    </div>
+    <div class="col-sm text-left">
+      <input #newksname text="请输入新的知识领域名称"/>
+      <button (click)="addNewksName(newksname.value); newksname.value=''; this.showAllKs()" class="btn-primary" >提交</button>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
 </div>
 
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      This is some text within a card body.
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+    </li>
+  </ul>
+</div>
