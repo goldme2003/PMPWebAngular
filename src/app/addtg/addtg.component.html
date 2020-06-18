@@ -1,1 +1,49 @@
 <p>addtg works!</p>
+<p>addpg works!</p>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <div class="card text-center">
+
+        <h2 class="text-larger">数据库中已有的工具组</h2>
+
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead class="table-primary">
+            <th>工具组主键ID</th>
+            <th>工具组名称</th>
+            </thead>
+            <tbody *ngFor="let tcitem of alltcitems">
+            <tr>
+              <td><span class="badge">{{tcitem.tcId}}</span></td>
+              <td><a routerLink="/addpg">
+                {{tcitem.tcName}}
+              </a></td>
+            </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm text-right">
+      <label>请输入新的工具组名称：</label>
+    </div>
+    <div class="col-sm text-left">
+      <input #newtcname text="请输入新的知识领域名称"/>
+      <button (click)="addNewTcName(newtcname.value); newtcname.value=''; this.showAllTc()" class="btn-primary" >提交</button>
+    </div>
+    <div class="col-sm">
+
+    </div>
+  </div>
+</div>
