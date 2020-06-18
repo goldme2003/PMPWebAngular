@@ -10,7 +10,7 @@ import {pgModel} from '../models/pgmodel';
 export class ProcessgroupService {
 
   private getpgservurl = "pmpweb/getallpg";
-  private postpgservurl = "pmpweb/addpg"
+  private postpgservurl = "pmpweb/addpg";
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'text'})
   };
