@@ -67,7 +67,7 @@
         </div>
         <select class="custom-select" id="pg_inputGroupSelect" #pg_inputGroupSelect>
           <option selected>请正确选择该过程的所属过程组...</option>
-          <option *ngFor="let pgi of pgitem" value="${{pgi.pgId}}">{{pgi.pgName}}</option>
+          <option *ngFor="let pgi of pgitem" [value]="pgi.pgId">{{pgi.pgName}}</option>
         </select>
       </div>
 
@@ -80,7 +80,7 @@
         </div>
         <select class="custom-select" id="ks_inputGroupSelect" #ks_inputGroupSelect>
           <option selected>请正确选择该过程的所属知识领域...</option>
-          <option *ngFor="let ksi of ksitem" value="${{ksi.ksId}}">{{ksi.ksName}}</option>
+          <option *ngFor="let ksi of ksitem" [value]="ksi.ksId">{{ksi.ksName}}</option>
         </select>
       </div>
 
@@ -90,7 +90,7 @@
 
       </div>
       <div class="col-sm">
-        <button (click)="addNewpnName(newprocessname.value, 1, 1, ' '); newprocessname.value= ''; showAllpns()" class="btn-primary">提交</button>
+        <button (click)="addNewpnName(newprocessname.value, pg_inputGroupSelect.value, ks_inputGroupSelect.value, ' '); newprocessname.value= ''; showAllpns()" class="btn-primary">提交</button>
       </div>
       <div class="col-sm">
 
