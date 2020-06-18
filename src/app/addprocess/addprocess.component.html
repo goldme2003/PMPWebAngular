@@ -1,12 +1,13 @@
-<p>addprocess works!</p>
+
 <div class="container">
+  <p>addprocess works!</p>
   <div class="card">
     <h2 class="text-center">数据库中已有过程名称</h2>
     <div class="body">
       <div class="table-responsive">
         <table class="table table-sm">
           <thead class="table-primary">
-          <th>ID</th>
+          <th>内部主键ID</th>
           <th>名称</th>
           <th>所属知识领域</th>
           <th>所属过程组</th>
@@ -24,8 +25,8 @@
             <td>
               <ng-container *ngFor="let ksi of ksitem">
                 <a routerLink="/addks" *ngIf="ksi.ksId == pnitem.belongedKnowledgeScopeId">
-                {{ksi.ksName}}
-              </a>
+                  {{ksi.ksName}}
+                </a>
               </ng-container>
             </td>
             <td>
@@ -44,58 +45,58 @@
       </div>
     </div>
   </div>
+
+
   <div class="card">
     <h3 class="text-center">新建过程名称</h3>
     <div class="body">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
           <label>请输入新过程的名称：</label>
         </div>
-        <div class="col-md-3 text-left">
+        <div class="col-md-4">
           <input #newprocessname text="请输入新的知识领域名称"/>
-
         </div>
-
       </div>
-    </div>
 
-    <div class="row">
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="pg_inputGroupSelect">请选择所属过程组：</label>
+      <div class="row">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="pg_inputGroupSelect">请选择所属过程组：</label>
+          </div>
+          <select class="custom-select" id="pg_inputGroupSelect" #pg_inputGroupSelect>
+            <option selected>请正确选择该过程的所属过程组...</option>
+            <option *ngFor="let pgi of pgitem" [value]="pgi.pgId">{{pgi.pgName}}</option>
+          </select>
         </div>
-        <select class="custom-select" id="pg_inputGroupSelect" #pg_inputGroupSelect>
-          <option selected>请正确选择该过程的所属过程组...</option>
-          <option *ngFor="let pgi of pgitem" [value]="pgi.pgId">{{pgi.pgName}}</option>
-        </select>
       </div>
-
-    </div>
-    <div class="row">
-
-      <div class="input-group mb-3">
-        <div class="input-group-prepend">
-          <label class="input-group-text" for="ks_inputGroupSelect">请选择所属知识领域：</label>
+      <div class="row">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="ks_inputGroupSelect">请选择所属知识领域：</label>
+          </div>
+          <select class="custom-select" id="ks_inputGroupSelect" #ks_inputGroupSelect>
+            <option selected>请正确选择该过程的所属知识领域...</option>
+            <option *ngFor="let ksi of ksitem" [value]="ksi.ksId">{{ksi.ksName}}</option>
+          </select>
         </div>
-        <select class="custom-select" id="ks_inputGroupSelect" #ks_inputGroupSelect>
-          <option selected>请正确选择该过程的所属知识领域...</option>
-          <option *ngFor="let ksi of ksitem" [value]="ksi.ksId">{{ksi.ksName}}</option>
-        </select>
       </div>
 
-    </div>
-    <div class="row">
-      <div class="col-sm">
-
+      <div class="row">
+        <div class="col-md-3">
+          <label>请输入新过程描述：</label>
+        </div>
+          <textarea class="form-control" #newprocessdetails rows="5"></textarea>
       </div>
-      <div class="col-sm">
-        <button (click)="addNewpnName(newprocessname.value, pg_inputGroupSelect.value, ks_inputGroupSelect.value, ' '); newprocessname.value= ''; showAllpns()" class="btn-primary">提交</button>
-      </div>
-      <div class="col-sm">
 
+      <div class="row">
+        <button (click)="addNewpnName(newprocessname.value, pg_inputGroupSelect.value, ks_inputGroupSelect.value, newprocessdetails.value); newprocessname.value= ''; showAllpns()" class="btn-primary" routerLink="/additto">提交</button>
       </div>
     </div>
+
   </div>
 
 </div>
+
+
+
