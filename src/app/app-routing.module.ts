@@ -11,6 +11,7 @@ import {ModitoolComponent} from './moditool/moditool.component';
 import {AddtgComponent} from './addtg/addtg.component';
 import {AddprocessComponent} from './addprocess/addprocess.component';
 import {ModiprocessComponent} from './modiprocess/modiprocess.component';
+import {AddittocategComponent} from './addittocateg/addittocateg.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'addtg', component: AddtgComponent},
   {path: 'addprocess', component: AddprocessComponent},
   {path: 'modiprocess', component: ModiprocessComponent},
+  {path: 'addittoc', component: AddittocategComponent}
 
 
 ];

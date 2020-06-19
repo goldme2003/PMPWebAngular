@@ -1,1 +1,83 @@
-<p>additto works!</p>
+<div class="container">
+  <p>Itto works!</p>
+  <div class="card">
+    <h2 class="text-center">数据库中已有的ITTO项</h2>
+    <div class="body">
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="table-primary">
+          <th>内部主键ID</th>
+          <th>ITTO名称</th>
+          <th>所属ITTO类</th>
+          </thead>
+          <tbody *ngFor="let ittoitem of allittoitem">
+          <tr>
+            <td>
+              <span class="badge">{{ittoitem.ittoiId}}</span>
+            </td>
+            <td>
+              <a routerLink="/addtc">
+                {{ittoitem.ittoItemName}}
+              </a>
+            </td>
+            <td>
+              <ng-container *ngFor="let ittoci of allittocategitem">
+                <a routerLink="/addks" *ngIf="ittoci.ittoCid == ittoitem.belongedIttoItemCateg">
+                  {{ittoci.ittoCName}}
+                </a>
+              </ng-container>
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h3 class="text-center">新建ITTO项名称</h3>
+    <div class="body">
+      <div class="row">
+        <div class="col-md-4">
+          <label>请输入新<span class="text-danger">ITTO项</span>名称：</label>
+        </div>
+        <div class="col-md-4">
+          <input #newittoname text="请输入新ITTO项名称"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="tc_inputGroupSelect">请选择所属ITTO类：</label>
+          </div>
+          <select class="custom-select" id="tc_inputGroupSelect" #itto_inputGroupSelect>
+            <option selected>请正确选择该过程的所属ITTO类...</option>
+            <option *ngFor="let ittoci of allittocategitem" [value]="ittoci.ittoCid">{{ittoci.ittoCName}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label>请输入ITTO项的描述：</label>
+        </div>
+        <textarea class="form-control" #newittodetails rows="5"></textarea>
+      </div>
+
+      <div class="row">
+        <button (click)="this.addNewItto(newittoname.value, this.itto_inputGroupSelect.value, newittodetails.value); newittoname.value = ''; this.showItto();" class="btn-primary">提交</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+

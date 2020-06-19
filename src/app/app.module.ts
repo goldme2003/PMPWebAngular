@@ -15,6 +15,7 @@ import { AddtgComponent } from './addtg/addtg.component';
 import { AddprocessComponent } from './addprocess/addprocess.component';
 import { ModiprocessComponent } from './modiprocess/modiprocess.component';
 import {HttpClientModule} from '@angular/common/http';
+import { AddittocategComponent } from './addittocateg/addittocateg.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {HttpClientModule} from '@angular/common/http';
     ModitoolComponent,
     AddtgComponent,
     AddprocessComponent,
-    ModiprocessComponent
+    ModiprocessComponent,
+    AddittocategComponent
   ],
   imports: [
     BrowserModule,

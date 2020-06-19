@@ -1,1 +1,82 @@
-<p>addtool works!</p>
+<div class="container">
+  <p>Tool works!</p>
+  <div class="card">
+    <h2 class="text-center">数据库中已有的工具</h2>
+    <div class="body">
+      <div class="table-responsive">
+        <table class="table table-sm">
+          <thead class="table-primary">
+          <th>内部主键ID</th>
+          <th>工具名称</th>
+          <th>所属工具类</th>
+          </thead>
+          <tbody *ngFor="let toolitem of alltoolitem">
+          <tr>
+            <td>
+              <span class="badge">{{toolitem.tId}}</span>
+            </td>
+            <td>
+              <a routerLink="/addtc">
+                {{toolitem.toolName}}
+              </a>
+            </td>
+            <td>
+              <ng-container *ngFor="let tci of alltcitem">
+                <a routerLink="/addks" *ngIf="tci.tcId == toolitem.belongedToolCateg">
+                  {{tci.tcName}}
+                </a>
+              </ng-container>
+            </td>
+
+          </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h3 class="text-center">新建工具名称</h3>
+    <div class="body">
+      <div class="row">
+        <div class="col-md-4">
+          <label>请输入新<span class="text-danger">工具与技术</span>名称：</label>
+        </div>
+        <div class="col-md-4">
+          <input #newtoolname text="请输入新工具名称"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="tc_inputGroupSelect">请选择所属工具组：</label>
+          </div>
+          <select class="custom-select" id="tc_inputGroupSelect" #tc_inputGroupSelect>
+            <option selected>请正确选择该过程的所属工具组...</option>
+            <option *ngFor="let tci of alltcitem" [value]="tci.tcId">{{tci.tcName}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <label>请输入新工具的描述：</label>
+        </div>
+        <textarea class="form-control" #newtooldetails rows="5"></textarea>
+      </div>
+
+      <div class="row">
+        <button (click)="this.addNewtoolName(newtoolname.value, tc_inputGroupSelect.value, newtooldetails.value); newtoolname.value = ''; this.showtool();" class="btn-primary">提交</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+

@@ -1,0 +1,62 @@
+<p>add ITTO category works!</p>
+<div class="container-fluid">
+  <div class="col-md-12">
+    <div class="card text-center">
+      <div class="header">
+        <h2 class="text-larger">数据库中已有的ITTO类</h2>
+      </div>
+      <div class="body">
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead class="table-primary">
+            <th>ITTO类主键ID</th>
+            <th>ITTO类名称</th>
+            <th>ITTO类描述</th>
+            </thead>
+            <tbody *ngFor="let ittoci of allittocitems">
+            <tr>
+              <td><span class="badge">{{ittoci.ittoCid}}</span></td>
+              <td><a routerLink="/addpg">
+                {{ittoci.ittoCName}}
+              </a></td>
+              <td><a routerLink="/addpg">
+                {{ittoci.details}}
+              </a></td>
+            </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</div>
+<div class="card">
+  <h3 class="text-center">请输入新的ITTO类别名称</h3>
+  <div class="row">
+    <div class="col-md-3">
+      <label>请输入新的ITTO类名称：</label>
+    </div>
+
+    <div class="col-md-3">
+      <input #newittocname text="请输入新的知识领域名称"/>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <label>请输入ITTO类的描述：</label>
+    </div>
+    <textarea class="form-control" #newittocategdetails rows="5"></textarea>
+  </div>
+  <div class="text-center">
+    <button (click)="addNewIttoC(newittocname.value, newittocategdetails.value); this.newittocname.value='';this.showAllIttoC();" class="btn-primary" >提交</button>
+  </div>
+
+</div>
+
