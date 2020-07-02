@@ -1,1 +1,107 @@
-<p>modiprocess works!</p>
+
+<div class="container-fluid">
+  <div class="card">
+    <h2 align="center">修改过程</h2>
+    <div class="row">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="ks_inputGroupSelect">请选择需要修改的过程：</label>
+        </div>
+        <select class="custom-select" id="ks_inputGroupSelect" #ks_inputGroupSelect>
+          <option selected>需修改的过程</option>
+          <option *ngFor="let pn of allpnitem" [value]="pn.pId">{{pn.pName}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-input-tab" data-toggle="tab" href="#nav-input" role="tab" aria-controls="nav-input" aria-selected="true">输入</a>
+        <a class="nav-item nav-link" id="nav-tools-tab" data-toggle="tab" href="#nav-tools" role="tab" aria-controls="nav-tools" aria-selected="false">工具与技术</a>
+        <a class="nav-item nav-link" id="nav-output-tab" data-toggle="tab" href="#nav-output" role="tab" aria-controls="nav-output" aria-selected="false">输出</a>
+        <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">详细解析</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane active" id="nav-input" role="tabpanel" aria-labelledby="nav-input-tab">
+<!--显示所有输入ITTO项-->
+        <ng-container *ngFor="let sittocItem of allittoCitem">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="sittocItem.ittoCid" id="cbittoc{{sittocItem.ittoCid}}" #cbittoc{{sittocItem.ittoCid}}}>
+            <label class="form-check-label" for="cbittoc{{sittocItem.ittoCid}}">
+              <span><h4 class="badge-primary"><strong>{{sittocItem.ittoCName}}</strong>类，其中包括：</h4></span>
+            </label>
+            <hr>
+            <div *ngFor="let sittoItem of allittoitem">
+              <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
+
+                <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId" id="cbitto{{sittoItem.ittoiId}}" checked>
+                <label class="form-check-label" for="cbitto{{sittoItem.ittoiId}}">
+                  {{sittoItem.ittoItemName}}
+                </label>
+                <hr>
+              </div>
+
+            </div>
+          </div>
+
+        </ng-container>
+
+      </div>
+      <div class="tab-pane" id="nav-tools" role="tabpanel" aria-labelledby="nav-tools-tab">
+        <ng-container *ngFor="let stoolCItem of alltoolCitem">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="stoolCItem.tcId" id="cbtoolc{{stoolCItem.tcId}}" #cbtoolc{{stoolCItem.tcId}}>
+            <label class="form-check-label" for="cbtoolc{{stoolCItem.tcId}}">
+              <span><h4 class="badge-primary"><strong>{{stoolCItem.tcName}}</strong>类，其中包括：</h4></span>
+            </label>
+            <hr>
+            <div *ngFor="let stoolItem of alltoolsitem">
+              <div *ngIf="stoolItem.belongedToolCateg == stoolCItem.tcId">
+
+                <input class="form-check-input" type="checkbox" [value]="stoolItem.tId" id="cbtool{{stoolItem.tId}}" checked>
+                <label class="form-check-label" for="cbtool{{stoolItem.tId}}">
+                  {{stoolItem.toolName}}
+                </label>
+                <hr>
+              </div>
+
+            </div>
+          </div>
+
+        </ng-container>
+      </div>
+      <div class="tab-pane" id="nav-output" role="tabpanel" aria-labelledby="nav-output-tab">
+        <ng-container *ngFor="let sittocItem of allittoCitem">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" [value]="sittocItem.ittoCid" id="cbittoc{{sittocItem.ittoCid}}" #cbittoc{{sittocItem.ittoCid}}}>
+            <label class="form-check-label" for="cbittoc{{sittocItem.ittoCid}}">
+              <span><h4 class="badge-primary"><strong>{{sittocItem.ittoCName}}</strong>类，其中包括：</h4></span>
+            </label>
+            <hr>
+            <div *ngFor="let sittoItem of allittoitem">
+              <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
+
+                <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId" id="cbitto{{sittoItem.ittoiId}}" checked>
+                <label class="form-check-label" for="cbitto{{sittoItem.ittoiId}}">
+                  {{sittoItem.ittoItemName}}
+                </label>
+                <hr>
+              </div>
+
+            </div>
+          </div>
+
+        </ng-container>
+      </div>
+      <div class="tab-pane" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+        <div class="form-group">
+          <label for="processTextarea"><strong>该过程的详细解析及注意事项：</strong></label>
+          <textarea class="form-control" id="processTextarea" rows="7"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
