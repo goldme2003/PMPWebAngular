@@ -26,7 +26,7 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane active" id="nav-input" role="tabpanel" aria-labelledby="nav-input-tab">
-<!--显示所有输入ITTO项-->
+        <!--显示所有输入ITTO项-->
         <ng-container *ngFor="let sittocItem of allittoCitem">
           <div class="form-check">
             <input class="form-check-input" type="checkbox" [value]="sittocItem.ittoCid" id="cbittoc{{sittocItem.ittoCid}}" #cbittoc{{sittocItem.ittoCid}}}>
@@ -34,17 +34,18 @@
               <span><h4 class="badge-primary"><strong>{{sittocItem.ittoCName}}</strong>类，其中包括：</h4></span>
             </label>
             <hr>
-            <div *ngFor="let sittoItem of allittoitem">
-              <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
-
-                <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId" id="cbitto{{sittoItem.ittoiId}}" checked>
-                <label class="form-check-label" for="cbitto{{sittoItem.ittoiId}}">
-                  {{sittoItem.ittoItemName}}
-                </label>
-                <hr>
+            <div class="row row-cols-3">
+              <div class="col" *ngFor="let sittoItem of allittoitem">
+                <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
+                  <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId"
+                         id="cbitto{{sittoItem.ittoiId}}">
+                  <label class="form-check-label" for="cbitto{{sittoItem.ittoiId}}">
+                    {{sittoItem.ittoItemName}}
+                  </label>
+                </div>
               </div>
-
             </div>
+            <hr>
           </div>
 
         </ng-container>
@@ -58,17 +59,19 @@
               <span><h4 class="badge-primary"><strong>{{stoolCItem.tcName}}</strong>类，其中包括：</h4></span>
             </label>
             <hr>
-            <div *ngFor="let stoolItem of alltoolsitem">
-              <div *ngIf="stoolItem.belongedToolCateg == stoolCItem.tcId">
+            <div class="row row-cols-3">
+              <div class="col" *ngFor="let stoolItem of alltoolsitem">
+                <div *ngIf="stoolItem.belongedToolCateg == stoolCItem.tcId">
 
-                <input class="form-check-input" type="checkbox" [value]="stoolItem.tId" id="cbtool{{stoolItem.tId}}" checked>
-                <label class="form-check-label" for="cbtool{{stoolItem.tId}}">
-                  {{stoolItem.toolName}}
-                </label>
-                <hr>
+                  <input class="form-check-input" type="checkbox" [value]="stoolItem.tId" id="cbtool{{stoolItem.tId}}" >
+                  <label class="form-check-label" for="cbtool{{stoolItem.tId}}">
+                    {{stoolItem.toolName}}
+                  </label>
+
+                </div>
               </div>
-
             </div>
+            <hr>
           </div>
 
         </ng-container>
@@ -81,17 +84,22 @@
               <span><h4 class="badge-primary"><strong>{{sittocItem.ittoCName}}</strong>类，其中包括：</h4></span>
             </label>
             <hr>
-            <div *ngFor="let sittoItem of allittoitem">
-              <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
 
-                <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId" id="cbitto{{sittoItem.ittoiId}}" checked>
-                <label class="form-check-label" for="cbitto{{sittoItem.ittoiId}}">
-                  {{sittoItem.ittoItemName}}
-                </label>
-                <hr>
+            <div class="row row-cols-3">
+              <div class="col" *ngFor="let sittoItem of allittoitem">
+                <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
+
+                  <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId"
+                         id="cbitto{{sittoItem.ittoiId}}">
+                  <label class="form-check-label" for="cbitto{{sittoItem.ittoiId}}">
+                    {{sittoItem.ittoItemName}}
+                  </label>
+
+                </div>
               </div>
-
             </div>
+            <hr>
+
           </div>
 
         </ng-container>
@@ -104,4 +112,16 @@
       </div>
     </div>
   </div>
+
+  <div class="card">
+    <div class="row row-cols-2">
+      <div class="col align-center">
+        <button class="btn-primary">取消</button>
+      </div>
+      <div class="col">
+        <button class="btn-primary">确认</button>
+      </div>
+    </div>
+  </div>
+
 </div>
