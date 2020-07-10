@@ -13,6 +13,10 @@ import {IttoCategService} from '../service/itto-categ.service';
 import {IttoItemService} from '../service/itto-item.service';
 import {ToolgroupService} from '../service/toolgroup.service';
 import {ToolService} from '../service/tool.service';
+import {ProcittoService} from '../service/procitto.service';
+import {ProctoolService} from '../service/proctool.service';
+import {ProcIttoModel} from '../models/ProcIttoModel';
+import {ProcToolModel} from '../models/ProcToolModel';
 
 @Component({
   selector: 'app-modiprocess',
@@ -21,13 +25,28 @@ import {ToolService} from '../service/tool.service';
 })
 export class ModiprocessComponent implements OnInit {
 
+  operProcId: number; //需要操作的过程ProcID
   allpnitem: pnModel[];
   allittoitem: IttoModel[];
   allittoCitem: IttoCModel[];
   alltoolsitem: ToolModel[];
   alltoolCitem: tgModel[];
+  allinIttoitem: ProcIttoModel[];
+  alloutIttoItem: ProcIttoModel[];
+  allProctoolitem: ProcToolModel[];
+  cbcheckedgroup: Array<number>;
+  toolcheckedgroup: Array<number>;
+  outputcheckedgroup: Array<number>;
+  inputcheckeditem: Array<number>;
+  toolcheckeditem: Array<number>;
+  outputcheckeditem: Array<number>;
 
-  constructor(private pnService: ProcessService, private ittoCategService: IttoCategService, private ittoItemService: IttoItemService, private toolgroupService: ToolgroupService, private toolService: ToolService) { }
+
+
+  constructor(private pnService: ProcessService, private ittoCategService: IttoCategService, private ittoItemService: IttoItemService,
+              private toolgroupService: ToolgroupService, private toolService: ToolService, private procittoService: ProcittoService,
+              private proctoolService: ProctoolService) {
+  }
 
   ngOnInit(): void {
 
@@ -36,8 +55,17 @@ export class ModiprocessComponent implements OnInit {
     this.showtool();
     this.listTc();
     this.showItto();
-  }
+    this.cbcheckedgroup = new Array<number>();
+    this.toolcheckedgroup = new Array<number>();
+    this.outputcheckedgroup = new Array<number>();
+    this.inputcheckeditem = new Array<number>();
+    this.toolcheckeditem = new Array<number>();
+    this.outputcheckeditem = new Array<number>();
+    this.allinIttoitem = [];
+    this.alltoolsitem = [];
+    this.alloutIttoItem = [];
 
+  }
 
 
   showAllpns(): void {
@@ -65,10 +93,11 @@ export class ModiprocessComponent implements OnInit {
     this.toolgroupService.getAllTc()
       .subscribe(alltcitems => this.alltoolCitem = alltcitems);
   }
-/*
-* TODO:
-*  modify the ITTO items and tools for each process that needs to be modified;
-* */
+
+  /*
+  * TODO:
+  *  modify the ITTO items and tools for each process that needs to be modified;
+  * */
   modiProcess(newpnName: string, bpg: number, bks: number, detail: string): void {
     const tempnewpn: pnModel = {pId: 1, pName: newpnName, belongedProcessGroupId: bpg, belongedKnowledgeScopeId: bks, details: ""};
     this.pnService.addPn(tempnewpn)
@@ -77,4 +106,78 @@ export class ModiprocessComponent implements OnInit {
       });
   }
 
+
+  addAll(pid: number, inittolist: Array<number>, toollist: Array<number>, outittolist: Array<number>): void{
+    for (let each of inittolist){
+      const tempnewin: ProcIttoModel = {pittoid: 1, belongedpid: pid, ittoid: each, io: 0};
+      this.procittoService.addProcItto(tempnewin)
+        .subscribe(newItem => {
+          this.allinIttoitem.push(newItem);
+        });
+    }
+    for (let each of outittolist){
+      const tempnewout: ProcIttoModel = {pittoid: 1, belongedpid: pid, ittoid: each, io: 1};
+      this.procittoService.addProcItto(tempnewout)
+        .subscribe(newItem => {
+          this.alloutIttoItem.push(newItem);
+        });
+    }
+    for (let each of toollist){
+      const tempnewtool: ProcToolModel = {ptid: 1, belongedpid: pid, toolid: each};
+      this.proctoolService.addProcTool(tempnewtool)
+        .subscribe(newItem => {
+          this.alltoolsitem.push(newItem);
+        });
+    }
+/*    this.ittoArraytoModel(pid, this.inputcheckeditem, this.allinIttoitem, 0);
+    this.toolArraytoModel(pid, this.toolcheckeditem, this.allProctoolitem);
+    this.ittoArraytoModel(pid, this.outputcheckeditem, this.alloutIttoItem, 1);
+
+    this.addIttoItemTool(pid, this.allinIttoitem, this.allProctoolitem, this.alloutIttoItem);*/
+  }
+
+
+  checkedIttoCateg(ched: boolean, ittocid: number, showlist: Array<number>): void {
+    /*    console.log(ched);
+        console.log(ittocid);
+        console.log(showlist);*/
+
+
+    if (ched && !this.checkinList(ittocid, showlist)) {
+      showlist.push(ittocid);
+
+    } else{
+      if (!ched){
+        let i = showlist.indexOf(ittocid);
+        showlist.splice(i, 1);
+      }
+
+    }
+  }
+
+  checkedIttoItem(ched: boolean, ittocid: number, showlist: Array<number>): void {
+    /*    console.log(ched);
+        console.log(ittocid);*/
+
+    if (ched && !this.checkinList(ittocid, showlist)) {
+      showlist.push(ittocid);
+
+    } else{
+      if (!ched){
+        let i = showlist.indexOf(ittocid);
+        showlist.splice(i, 1);
+      }
+
+    }
+    console.log(showlist);
+  }
+
+
+  checkinList(i: number, chlist: Array<number>): boolean{
+
+    return chlist.includes(i);
+  }
+
+
 }
+
