@@ -126,7 +126,7 @@ export class ModiprocessComponent implements OnInit {
       const tempnewtool: ProcToolModel = {ptid: 1, belongedpid: pid, toolid: each};
       this.proctoolService.addProcTool(tempnewtool)
         .subscribe(newItem => {
-          this.alltoolsitem.push(newItem);
+          this.allProctoolitem.push(newItem);
         });
     }
 /*    this.ittoArraytoModel(pid, this.inputcheckeditem, this.allinIttoitem, 0);
