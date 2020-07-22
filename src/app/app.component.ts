@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+
 import {KsServiceService} from './service/ks-service.service';
 import {Ksmodel} from './ksmodel';
 import {pnModel} from './models/pnmodel';

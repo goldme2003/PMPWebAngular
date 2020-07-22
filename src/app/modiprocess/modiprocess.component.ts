@@ -25,7 +25,7 @@ import {ProcToolModel} from '../models/ProcToolModel';
 })
 export class ModiprocessComponent implements OnInit {
 
-  operProcId: number; //需要操作的过程ProcID
+
   allpnitem: pnModel[];
   allittoitem: IttoModel[];
   allittoCitem: IttoCModel[];
@@ -62,7 +62,7 @@ export class ModiprocessComponent implements OnInit {
     this.toolcheckeditem = new Array<number>();
     this.outputcheckeditem = new Array<number>();
     this.allinIttoitem = [];
-    this.alltoolsitem = [];
+    this.allProctoolitem = [];
     this.alloutIttoItem = [];
 
   }
@@ -109,24 +109,27 @@ export class ModiprocessComponent implements OnInit {
 
   addAll(pid: number, inittolist: Array<number>, toollist: Array<number>, outittolist: Array<number>): void{
     for (let each of inittolist){
-      const tempnewin: ProcIttoModel = {pittoid: 1, belongedpid: pid, ittoid: each, io: 0};
+      const tempnewin: ProcIttoModel = {pittoId: 1, belongedPId: pid, ittoItemId: each, inOrout: 0};
       this.procittoService.addProcItto(tempnewin)
         .subscribe(newItem => {
           this.allinIttoitem.push(newItem);
+          console.log(`process ${tempnewin.belongedPId}'s input itto item has been added`);
         });
     }
     for (let each of outittolist){
-      const tempnewout: ProcIttoModel = {pittoid: 1, belongedpid: pid, ittoid: each, io: 1};
+      const tempnewout: ProcIttoModel = {pittoId: 1, belongedPId: pid, ittoItemId: each, inOrout: 1};
       this.procittoService.addProcItto(tempnewout)
         .subscribe(newItem => {
           this.alloutIttoItem.push(newItem);
+          console.log(`process ${tempnewout.belongedPId}'s output itto item has been added`);
         });
     }
     for (let each of toollist){
-      const tempnewtool: ProcToolModel = {ptid: 1, belongedpid: pid, toolid: each};
+      const tempnewtool: ProcToolModel = {ptId: 1, belongedPId: pid, toolId: each};
       this.proctoolService.addProcTool(tempnewtool)
         .subscribe(newItem => {
           this.allProctoolitem.push(newItem);
+          console.log(`process ${tempnewtool.belongedPId}'s tool item has been added`);
         });
     }
 /*    this.ittoArraytoModel(pid, this.inputcheckeditem, this.allinIttoitem, 0);

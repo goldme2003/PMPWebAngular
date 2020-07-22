@@ -10,6 +10,8 @@ import {ProcIttoModel} from '../models/ProcIttoModel';
 export class ProcittoService {
 
   private addprocittoservurl = "pmpweb/addprocitto";
+  private getprocittoservurl = "pmpweb/getallprocitto";
+
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'text'})
@@ -20,7 +22,15 @@ export class ProcittoService {
 
   addProcItto(newprocItto: ProcIttoModel): Observable<ProcIttoModel> {
 
-    const addnewprocittourl = `${this.addprocittoservurl}?pid=${newprocItto.belongedpid}&iid=${newprocItto.ittoid}&io=${newprocItto.io}`;
+    const addnewprocittourl = `${this.addprocittoservurl}?pid=${newprocItto.belongedPId}&iid=${newprocItto.ittoItemId}&io=${newprocItto.inOrout}`;
     return this.http.post<ProcIttoModel>(addnewprocittourl, newprocItto, this.httpOptions);
   }
+
+  getProcItto(pid: number): Observable<ProcIttoModel[]> {
+
+    const getallprocittourl = `${this.getprocittoservurl}?pid=${pid}`;
+    return this.http.get<ProcIttoModel[]>(getallprocittourl);
+  }
+
+
 }

@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="card">
+    <h2 align="center">#{{this.ittopid}}过程</h2>
+
+    <div *ngFor="let each of allittocateg">
+      {{each.ittoCid}}. {{each.ittoCName}} ITTO category would be listed!
+    </div>
+  </div>
+
+  <div class="card">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-input-tab" data-toggle="tab" href="#nav-input" role="tab" aria-controls="nav-input" aria-selected="true">输入</a>
+        <a class="nav-item nav-link" id="nav-tools-tab" data-toggle="tab" href="#nav-tools" role="tab" aria-controls="nav-tools" aria-selected="false">工具与技术</a>
+        <a class="nav-item nav-link" id="nav-output-tab" data-toggle="tab" href="#nav-output" role="tab" aria-controls="nav-output" aria-selected="false">输出</a>
+        <a class="nav-item nav-link" id="nav-details-tab" data-toggle="tab" href="#nav-details" role="tab" aria-controls="nav-details" aria-selected="false">详细解析</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane active" id="nav-input" role="tabpanel" aria-labelledby="nav-input-tab">
+        <!--显示某一过程的ITTO项-->
+        <div class="container-fluid">
+          <ng-container *ngFor="let eachPitto of ittoiteminproc">
+            <div *ngIf="eachPitto.inOrout === 0">
+              <div class="row row-cols-3" >
+                <div class="col" *ngFor="let sittoitem of allittoitem">
+                  <div *ngIf="eachPitto.ittoItemId === sittoitem.ittoiId">{{sittoitem.ittoItemName}}</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+
+      </div>
+      <div class="tab-pane" id="nav-tools" role="tabpanel" aria-labelledby="nav-tools-tab">
+        <div class="container-fluid">
+          <ng-container *ngFor="let eachPtool of toolinproc">
+
+              <div class="row row-cols-3" >
+                <div class="col" *ngFor="let stoolitem of alltoolsitem">
+                  <div *ngIf="eachPtool.toolId === stoolitem.tId">{{stoolitem.toolName}}</div>
+                </div>
+              </div>
+
+          </ng-container>
+        </div>
+
+      </div>
+      <div class="tab-pane" id="nav-output" role="tabpanel" aria-labelledby="nav-output-tab">
+        <div class="container-fluid">
+          <ng-container *ngFor="let eachPitto of ittoiteminproc">
+            <div *ngIf="eachPitto.inOrout === 1">
+              <div class="row row-cols-3" >
+                <div class="col" *ngFor="let sittoitem of allittoitem">
+                  <div *ngIf="eachPitto.ittoItemId === sittoitem.ittoiId">{{sittoitem.ittoItemName}}</div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+      </div>
+      <div class="tab-pane" id="nav-details" role="tabpanel" aria-labelledby="nav-details-tab">
+        <div class="form-group">
+          <label for="processTextarea"><strong>该过程的详细解析及注意事项：</strong></label>
+          <textarea class="form-control" id="processTextarea" rows="7"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

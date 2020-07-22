@@ -1,5 +1,5 @@
 export interface ProcToolModel {
-  ptid: number;
-  belongedpid: number;
-  toolid: number;
+  ptId: number;
+  belongedPId: number;
+  toolId: number;
 }

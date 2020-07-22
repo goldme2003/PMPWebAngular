@@ -40,7 +40,7 @@
               <div class="col" *ngFor="let sittoItem of allittoitem">
                 <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
                   <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId"
-                         id="cbinitto{{sittoItem.ittoiId}}" [checked]="checkinList(sittoItem.belongedIttoItemCateg, this.cbcheckedgroup)"
+                         id="cbinitto{{sittoItem.ittoiId}}" #cbinitto{{sittoItem.ittoiId}} [checked]="checkinList(sittoItem.belongedIttoItemCateg, this.cbcheckedgroup)"
                   (click)="checkedIttoItem($event.target.checked, sittoItem.ittoiId, this.inputcheckeditem)">
                   <label class="form-check-label" for="cbinitto{{sittoItem.ittoiId}}">
                     {{sittoItem.ittoItemName}}
@@ -94,7 +94,7 @@
               <div class="col" *ngFor="let sittoItem of allittoitem">
                 <div *ngIf="sittoItem.belongedIttoItemCateg == sittocItem.ittoCid">
 
-                  <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId"
+                  <input class="form-check-input" type="checkbox" [value]="sittoItem.ittoiId" #cboutitto{{sittoItem.ittoiId}}
                          id="cboutitto{{sittoItem.ittoiId}}" [checked]="checkinList(sittoItem.belongedIttoItemCateg, this.outputcheckedgroup)"
                          (click)="checkedIttoItem($event.target.checked, sittoItem.ittoiId, this.outputcheckeditem)">
                   <label class="form-check-label" for="cboutitto{{sittoItem.ittoiId}}">
@@ -125,7 +125,7 @@
         <button class="btn-primary">取消</button>
       </div>
       <div class="col">
-        <button class="btn-primary" (click)="addAll(this.ks_inputGroupSelect.value, this.inputcheckeditem, this.toolcheckeditem, this.outputcheckeditem)">确认</button>
+        <button class="btn-primary" (click)="addAll(this.ks_inputGroupSelect.value, this.inputcheckeditem, this.toolcheckeditem, this.outputcheckeditem); ">确认</button>
       </div>
     </div>
   </div>

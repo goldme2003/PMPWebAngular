@@ -1,6 +1,6 @@
 export interface ProcIttoModel {
-  pittoid: number;
-  belongedpid: number;
-  ittoid: number;
-  io: number;
+  pittoId: number;
+  belongedPId: number;
+  ittoItemId: number;
+  inOrout: number;
 }

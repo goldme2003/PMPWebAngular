@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ProcIttoModel} from '../models/ProcIttoModel';
 import {Observable} from 'rxjs';
 import {ProcToolModel} from '../models/ProcToolModel';
+import {pgModel} from '../models/pgmodel';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import {ProcToolModel} from '../models/ProcToolModel';
 export class ProctoolService {
 
   private addproctoolservurl = "pmpweb/addproctool";
+  private getproctoolservurl = "pmpweb/getallproctool";
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'text'})
@@ -20,7 +22,12 @@ export class ProctoolService {
 
   addProcTool(newprocTool: ProcToolModel): Observable<ProcToolModel> {
 
-    const addnewproctoolurl = `${this.addproctoolservurl}?pid=${newprocTool.belongedpid}&tid=${newprocTool.toolid}`;
+    const addnewproctoolurl = `${this.addproctoolservurl}?pid=${newprocTool.belongedPId}&tid=${newprocTool.toolId}`;
     return this.http.post<ProcToolModel>(addnewproctoolurl, newprocTool, this.httpOptions);
+  }
+  getProcTool(pid: number): Observable<ProcToolModel[]> {
+
+    const getallproctoolurl = `${this.getproctoolservurl}?pid=${pid}`;
+    return this.http.get<ProcToolModel[]>(getallproctoolurl);
   }
 }
